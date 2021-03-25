@@ -623,7 +623,7 @@ a {
 .section-home {
     height: 100vh;
     position: relative;
-    background-image: url("../images/slider3.jpg");
+    background-image: url("../images/cover/thailand.jpeg");
     background-size: cover;
     background-position: center;
 }
@@ -1209,7 +1209,7 @@ a {
 /* ---------------------------------------------- */
 
 .section-freelance {
-    background: url(../images/freelance.jpg);
+    background: url(../images/moeid-conference.jpeg);
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
