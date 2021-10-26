@@ -1,1 +1,12 @@
-No Content: https://www.beingeorge.com/justin/Dark/assets/css/custom.css
+/* No Content: https://www.beingeorge.com/justin/Dark/assets/css/custom.css
+
+
+*/
+
+
+.medium-widget-article__title {
+    color:white !important;
+}
+.medium-widget-article__description {
+    color:white !important;
+}
