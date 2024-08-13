@@ -10,3 +10,21 @@
 .medium-widget-article__description {
     color:white !important;
 }
+
+#jsonContent.multi-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#jsonContent.single-card .card {
+    margin: auto;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    #jsonContent.multi-card .card {
+        flex: 0 0 30%;
+        margin: 0.5rem;
+    }
+}

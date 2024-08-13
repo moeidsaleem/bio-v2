@@ -130,6 +130,11 @@
                         <li><a class="nav-link" href="#work">Works</a></li>
                         <li><a class="nav-link" href="#blog">Blog</a></li>
                         <li><a class="nav-link" href="#contact">Contact</a></li>
+                        <li>
+                            <a href="https://calendly.com/moeidsaleemkhan/misk-mentorship-session">
+                            <button class="btn btn-primary btn-sm" style="outline: none; border:none" >Get in Touch</button>
+                        </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -171,7 +176,7 @@
                     </div>
 
                     <div class="col-md-5 d-sm-block d-md-block">
-                        <img class="img-fluid img-thumbnail" src="assets/images/moeidsaleem.jpeg" alt="Moeid Saleem Khan - IT Specialist in UAE">
+                        <img class="img-fluid img-thumbnail" src="assets/images/moeid-new.png" alt="Moeid Saleem Khan - IT Specialist in UAE">
                     </div>
 
                 </div>
@@ -856,7 +861,7 @@
                         <h2 class="display-5 mb-3">@moeidsaleem</h2>
                         <a class="btn btn-outline-primary btn-lg" href="https://medium.com/@moeidsaleem" target="_blank" role="button">View all posts</a>
                     </div>
-                    <div class="row" id="jsonContent">
+                    <div  id="jsonContent">
                     </div>
                     <div class="swiper-progressbar"></div>
                 </div>
@@ -1013,47 +1018,62 @@
 
 
 
-<script>
+    <script>
+        $(document).ready(function () {
+            var $content = $('#jsonContent');
+            let user = 'moeidsaleem';
+            var rssUrl = 'https://medium.com/feed/@' + user;
+            var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl);
     
-    var $content = $('#jsonContent');
-    let user = 'moeidsaleem';
-var data = {
-    rss: 'https://medium.com/feed/@'+user
-};
-$.get('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40'+user, data, function (response) {
-    if (response.status == 'ok') {
-        console.log(response.items)
-        $("#logo").append(`<img src="${response.feed["image"]}" class="rounded mx-auto d-block">`)
-var output = '';
-        $.each(response.items, function (k, item) {
-            output += `<div class="card mb-3 mx-auto mr-5 swiper-slide blog-list b-box hover-state d-block wow fadeIn" data-wow-duration="1.5s"
-             style="width: 20rem;">`; //Adding Each Post into a card
-var tagIndex = item.description.indexOf('<img'); 
-//Find where the img tag starts
-var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; //Find where the src attribute starts
-var srcStart = srcIndex + 5; //Find where the actual image URL starts; 5 for the length of 'src="'
-var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; //Find where the URL ends 
-var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
-console.log('src', src);
-output += `<img style="height: 10rem; width:100%" src="${item.thumbnail || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png'}" class="card-img-top" alt="Cover image">`; //Adding the image to the Card
-            
-output += `<div class="card-body">`;    //Defining the Card body
-            
-output += `<h5 class="card-title"><a href="${item.link}">${item.title}</a></h5>`;   //Hyperlinking the title of the card to the post
-output += `<a href="${item.link}" class="btn btn-outline-success">Read More</a>`;    //Adding a Read More button that links to the original post.
-            
-output += '</div></div>';
-            
-return k < 10;
-        
-});
-        
-$content.html(output);   //Feeding the output into the div with id jsonContent
+            $.get(apiUrl, function (response) {
+                if (response.status === 'ok') {
+                    $('#logo').append(`<img src="${response.feed.image}" class="rounded mx-auto d-block">`);
     
-}
-});
+                    let output= '';
+                    $.each(response.items.slice(0, 10), function (k, item) {
+                        var src = '';
+                        var imgTagIndex = item.description.indexOf('<img');
+                        if (imgTagIndex !== -1) {
+                            var srcStart = item.description.indexOf('src=', imgTagIndex) + 5;
+                            var srcEnd = item.description.indexOf('"', srcStart);
+                            src = item.description.substring(srcStart, srcEnd);
+                        }
+                        src = src || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
+    
+                        var descriptionText = item.description.replace(/<img[^>]*>/g, '');
+                        var trimmedDescription = descriptionText.length > 120 ? descriptionText.substr(0, descriptionText.lastIndexOf(' ', 120)) + '...' : descriptionText;
+    
+                        output += `
+                            <div style="width:100%;border:2; border-color:white; padding:2px;" class="wow fadeIn" data-wow-duration="1.5s" >
+                                <img style="height: 10rem; width:100%; object-fit: cover;" src="${src}" class="card-img-top" alt="Cover image">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="${item.link}">${item.title}</a></h5>
+                                    <p class="card-text">${trimmedDescription}</p>
+                                    <a href="${item.link}" class="btn btn-outline-success">Read More</a>
+                                </div>
+                            </div>`;
+                    });
 
-</script>
+
+    
+                    $content.html(
+                    `
+                    <div >
+                        <div style="width: 100%; display: flex;flex-direction: column;flex-wrap: wrap;justify-content: space-between;align-items: center;">
+                        ${output
+                        }
+                        </div>
+                        </div>
+                    `   
+                );
+                }
+            });
+    
+         
+    
+
+        });
+    </script>
 
 
 
