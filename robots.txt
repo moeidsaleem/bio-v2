@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moeidsaleem.com/sitemap.xml
+
+# Disallow crawling of asset files
+User-agent: *
+Disallow: /assets/js/
+Disallow: /assets/css/
+Disallow: /assets/webfonts/
