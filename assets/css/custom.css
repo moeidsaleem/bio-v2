@@ -1,30 +1,286 @@
-/* No Content: https://www.beingeorge.com/justin/Dark/assets/css/custom.css
+/* ================================================
+   Custom UX Enhancements
+   ================================================ */
 
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
 
-*/
+/* Restore scrollbar for accessibility */
+::-webkit-scrollbar {
+    display: block !important;
+    width: 8px;
+}
 
+::-webkit-scrollbar-track {
+    background: #191919;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3b3e3e;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fd735a;
+}
+
+/* ================================================
+   Hero Section
+   ================================================ */
+
+.hero-subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.hero-cta .btn {
+    min-width: 160px;
+    margin: 5px;
+}
+
+/* ================================================
+   Navigation CTA Button
+   ================================================ */
+
+.nav-cta-btn {
+    padding: 8px 24px !important;
+    font-size: 11px !important;
+    letter-spacing: 1px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 3px;
+}
+
+/* ================================================
+   About Tagline
+   ================================================ */
+
+.tagline {
+    font-size: 0.85em;
+    color: #bebebe;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* ================================================
+   90-Day Plan Section
+   ================================================ */
+
+.section-plan {
+    background: #1e1e1e;
+}
+
+.plan-intro {
+    color: #878d8d;
+    font-size: 18px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.plan-card {
+    margin-bottom: 30px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.plan-icon {
+    font-size: 40px;
+    color: #fd735a;
+}
+
+.plan-card h5 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.plan-card p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.plan-badge {
+    display: inline-block;
+    padding: 4px 16px;
+    background: #fd735a;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* ================================================
+   Blog Grid Layout
+   ================================================ */
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    padding: 10px 0;
+}
+
+.blog-grid-item {
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.blog-grid-img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.blog-grid-body {
+    background: #1e1e1e;
+}
+
+.blog-grid-title {
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.blog-grid-title a {
+    color: #fff;
+}
+
+.blog-grid-title a:hover {
+    color: #fd735a;
+}
+
+.blog-grid-text {
+    font-size: 13px;
+    color: #878d8d;
+    line-height: 1.6;
+}
+
+/* ================================================
+   Footer Enhancements
+   ================================================ */
+
+.footer {
+    padding: 40px 0 !important;
+}
+
+.footer-brand {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.footer-brand:hover {
+    color: #fd735a;
+}
+
+.footer-social li {
+    margin: 0 10px;
+}
+
+.footer-social a {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #fd735a;
+}
+
+.copyright {
+    font-size: 13px;
+    color: #878d8d;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* ================================================
+   Medium Articles Widget (legacy)
+   ================================================ */
 
 .medium-widget-article__title {
-    color:white !important;
+    color: white !important;
 }
+
 .medium-widget-article__description {
-    color:white !important;
+    color: white !important;
 }
 
-#jsonContent.multi-card {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+/* ================================================
+   Contact Section Link Fix
+   ================================================ */
+
+.contact-details--panel a {
+    word-break: break-word;
 }
 
-#jsonContent.single-card .card {
-    margin: auto;
-    width: 100%;
+/* ================================================
+   Testimonial heading fix
+   ================================================ */
+
+.section-testimony .section-head h2 {
+    text-transform: capitalize;
 }
 
-@media (min-width: 768px) {
-    #jsonContent.multi-card .card {
-        flex: 0 0 30%;
-        margin: 0.5rem;
+/* ================================================
+   Mobile Responsive Fixes
+   ================================================ */
+
+@media (max-width: 768px) {
+    .hero-subtitle {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .hero-cta .btn {
+        min-width: 130px;
+        padding: 10px 20px;
+        font-size: 11px;
+    }
+
+    .plan-card {
+        min-height: auto;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-brand {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-subtitle {
+        font-size: 12px;
+    }
+
+    .nav-cta-btn {
+        margin-left: 0;
+        margin-top: 10px;
     }
 }
